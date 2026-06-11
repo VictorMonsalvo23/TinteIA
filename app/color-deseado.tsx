@@ -21,16 +21,46 @@ export default function ColorDeseado() {
 >
   <Picker.Item label="Selecciona un color" value="" />
 
-  <Picker.Item label="Rubio Miel" value="rubioMiel" />
-  <Picker.Item label="Rubio Cenizo" value="rubioCenizo" />
-  <Picker.Item label="Chocolate" value="chocolate" />
-  <Picker.Item label="Cobrizo" value="cobrizo" />
-  <Picker.Item label="Rojo Intenso" value="rojoIntenso" />
-  <Picker.Item label="Rosa Pastel" value="rosaPastel" />
+<Picker.Item label="Chocolate" value="chocolate" />
+
+<Picker.Item label="Moca" value="moca" />
+
+<Picker.Item label="Avellana" value="avellana" />
+
+<Picker.Item label="Caramelo" value="caramelo" />
+
+<Picker.Item label="Rubio Miel" value="rubioMiel" />
+
+<Picker.Item label="Rubio Cenizo" value="rubioCenizo" />
+
+<Picker.Item label="Rubio Perla" value="rubioPerla" />
+
+<Picker.Item label="Rubio Platinado" value="rubioPlatinado" />
+
+<Picker.Item label="Cobrizo" value="cobrizo" />
+
+<Picker.Item label="Rojo Intenso" value="rojoIntenso" />
+
+<Picker.Item label="Vino" value="vino" />
+
+<Picker.Item label="Rosa Pastel" value="rosaPastel" />
+
+<Picker.Item label="Morado" value="morado" />
+
+<Picker.Item label="Azul" value="azul" />
 </Picker>
 <TouchableOpacity
   style={styles.boton}
-  onPress={() => router.push('/resultado')}
+  onPress={() => {
+
+    if (!colorDeseado) {
+      alert('Selecciona un color deseado');
+      return;
+    }
+
+    router.push('/resultado');
+
+  }}
 >
   <Text style={styles.textoBoton}>
     Ver resultado

@@ -2,7 +2,7 @@ import { Picker } from '@react-native-picker/picker';
 import * as ImagePicker from 'expo-image-picker';
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useTinte } from './context/TinteContext';
 
 export default function SeleccionarFoto() {
@@ -32,7 +32,13 @@ export default function SeleccionarFoto() {
   };
 
   return (
-    <View style={styles.container}>
+  <ScrollView
+    style={styles.container}
+    contentContainerStyle={{
+      alignItems: 'center',
+      paddingBottom: 40,
+    }}
+  >
       <Text style={styles.titulo}>Selecciona una foto</Text>
 
       <TouchableOpacity style={styles.boton} onPress={abrirGaleria}>
@@ -64,24 +70,89 @@ export default function SeleccionarFoto() {
 </Picker>
 
 <TouchableOpacity
+  style={styles.botonDetectar}
+  onPress={() => {
+    setColorBase('castanoOscuro');
+  }}
+>
+  <Text style={styles.textoBoton}>
+    🤖 Detectar automáticamente
+  </Text>
+</TouchableOpacity>
+
+{colorBase !== '' && (
+  <View
+    style={{
+      backgroundColor: '#fff',
+      padding: 15,
+      borderRadius: 15,
+      marginTop: 10,
+      width: '100%',
+      alignItems: 'center',
+    }}
+  >
+    <Text
+      style={{
+        fontSize: 16,
+        color: '#666',
+      }}
+    >
+      🤖 Detectamos
+    </Text>
+
+    <Text
+      style={{
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: '#333',
+      }}
+    >
+      Castaño Oscuro
+    </Text>
+
+    <Text
+      style={{
+        color: '#888',
+        marginTop: 5,
+      }}
+    >
+      Confianza: 82%
+    </Text>
+  </View>
+)}
+
+<TouchableOpacity
   style={styles.botonContinuar}
-  onPress={() => router.push('/color-deseado')}
+  onPress={() => {
+
+  if (!foto) {
+    alert('Selecciona una foto primero');
+    return;
+  }
+
+  if (!colorBase) {
+    alert('Selecciona un color o usa la detección automática');
+    return;
+  }
+
+  router.push('/color-deseado');
+
+}}
 >
   <Text style={styles.textoBoton}>
     Continuar
   </Text>
 </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#FFF0F5',
-    alignItems: 'center',
-  },
+  flex: 1,
+  padding: 20,
+  backgroundColor: '#FFF0F5',
+},
 
   titulo: {
     marginTop: 40,
@@ -98,6 +169,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
 
+  
+
   textoBoton: {
     color: '#fff',
     fontSize: 18,
@@ -113,6 +186,14 @@ const styles = StyleSheet.create({
 botonContinuar: {
   marginTop: 20,
   backgroundColor: '#A020F0',
+  paddingVertical: 15,
+  paddingHorizontal: 30,
+  borderRadius: 15,
+},
+
+botonDetectar: {
+  marginTop: 10,
+  backgroundColor: '#6A0DAD',
   paddingVertical: 15,
   paddingHorizontal: 30,
   borderRadius: 15,

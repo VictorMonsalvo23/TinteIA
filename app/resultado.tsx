@@ -12,6 +12,24 @@ export default function Resultado() {
 
 const nombresColores = {
     
+  castanoMuyOscuro: 'Castaño Muy Oscuro',
+castanoMedio: 'Castaño Medio',
+
+rubioOscuro: 'Rubio Oscuro',
+rubioMedio: 'Rubio Medio',
+rubioClaro: 'Rubio Claro',
+rubioExtraClaro: 'Rubio Extra Claro',
+
+moca: 'Moca',
+avellana: 'Avellana',
+caramelo: 'Caramelo',
+
+rubioPerla: 'Rubio Perla',
+rubioPlatinado: 'Rubio Platinado',
+
+vino: 'Vino',
+morado: 'Morado',
+azul: 'Azul',  
   negro: 'Negro',
   castanoOscuro: 'Castaño Oscuro',
   castanoClaro: 'Castaño Claro',
@@ -45,6 +63,25 @@ const coloresVisuales = {
   rojoIntenso: '#B22222',
 
   rosaPastel: '#FFB6C1',
+
+  castanoMuyOscuro: '#2B1B17',
+castanoMedio: '#6F4E37',
+
+rubioOscuro: '#B8860B',
+rubioMedio: '#D4AF37',
+rubioClaro: '#F4E2A0',
+rubioExtraClaro: '#FFF4C2',
+
+moca: '#6F4E37',
+avellana: '#A47149',
+caramelo: '#C68E17',
+
+rubioPerla: '#E8E6E0',
+rubioPlatinado: '#F8F8FF',
+
+vino: '#722F37',
+morado: '#800080',
+azul: '#1E3A8A',
 };
 
 console.log("FOTO:", foto);
